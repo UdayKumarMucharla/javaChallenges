@@ -1,0 +1,31 @@
+/*https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/e-maze-in-1aa4e2ac/description/#c175896*/
+
+import java.util.*;
+
+class TestClass {
+    public static void main(String args[] ) throws Exception {
+
+        //Scanner
+        Scanner s = new Scanner(System.in);
+        String str = s.nextLine();
+        
+        char[] strArr = str.toCharArray();
+        int[] intArr = {0,0,0,0};
+        
+        for(int i = 0 ; i < strArr.length ;i++){
+            
+            if(strArr[i] == 'L')
+                intArr[0]++;
+            if(strArr[i] == 'R')
+                intArr[1]++;
+            if(strArr[i] == 'U')
+                intArr[2]++;
+            if(strArr[i]== 'D')
+                intArr[3]++;
+        }
+        
+        // System.out.println(intArr[0]+""+intArr[1]+""+intArr[2]+""+intArr[3]);
+        System.out.println(0 - intArr[0]+intArr[1]+" " + (0 + intArr[2]-intArr[3]));
+
+    }
+}
