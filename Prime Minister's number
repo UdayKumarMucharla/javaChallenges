@@ -1,0 +1,38 @@
+/*https://www.hackerearth.com/practice/basic-programming/complexity-analysis/time-and-space-complexity/practice-problems/algorithm/prime-ministers-number/ */
+#include <stdio.h>
+#include<math.h>
+int main(){
+	int f,t;
+	scanf("%d", &f);
+	scanf("%d", &t);
+
+
+    for(int n = f ; n <= t ; n++){
+        int prime  = isPrime(n);
+       if(prime > 0)
+        {
+            int nDigits = floor(log10(abs(prime))) + 1;
+            int sum = 0;
+            int p = prime;
+            for(int d = 0 ; d < nDigits ; d++){
+                sum = sum + p%10;
+                p = p/10;
+            }
+            if(isPrime(sum) > 0){
+                   printf("%d ",prime);
+            }
+        }
+    }
+}
+int isPrime(int num){
+    if(num > 3){
+        for(int i = 2; i <= ((double) sqrt(num)) ; i++){
+            if(num%i == 0)
+                return -1;
+        }
+                return num;
+    }
+    else
+        return num;
+}
+
