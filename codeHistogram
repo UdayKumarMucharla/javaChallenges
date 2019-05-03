@@ -1,0 +1,87 @@
+package challanges;
+
+ 
+
+import java.util.*;
+
+ 
+
+public class CodeHistogram {
+
+ 
+
+    public static void main(String[] args){
+
+ 
+
+        Scanner sc = new Scanner(System.in);
+
+        String input = sc.nextLine();
+
+         Integer Bsize = Integer.parseInt(sc.nextLine());
+
+        Integer Bmin = 1 , Bmax = Bsize;
+
+        List<String> numList = Arrays.asList(input.split(","));
+
+ 
+
+        Set<Integer> intSet = new HashSet<Integer>();
+
+        numList.forEach((val)->{
+
+            intSet.add(Integer.parseInt(val));
+
+ 
+
+        });
+
+        histogramDisplays code = new histogramDisplays();
+
+      code.histogramDisplay(Bmin,Bmax,intSet);
+
+   }
+
+ 
+
+ 
+
+}
+
+class histogramDisplays{
+
+ 
+
+     void histogramDisplay(int min,int max,Set<Integer> data){
+
+         int count = 0;
+
+         for(int i = min; i <= max ; i++){
+
+             if(data.contains(i)){
+
+                 count++;
+
+                 data.remove(i);
+
+             }
+
+         }
+
+         System.out.println(min+"to"+max + ":"+count);
+
+         if(data.size()>0){
+
+            int diff = (max-min)+1;
+
+             min = max+1;
+
+             max = max+diff;
+
+             histogramDisplay(min,max,data);
+
+         }
+
+     }
+
+}
