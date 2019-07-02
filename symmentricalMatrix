@@ -1,0 +1,47 @@
+import java.util.ArrayList; 
+import java.util.List; 
+import java.util.Scanner; 
+ 
+public class SymmentricalMatrix { 
+ 
+    public static void main(String[] args){ 
+ 
+        System.out.println("Enter Dimension of a Square Matrix"); 
+        Scanner sc = new Scanner(System.in); 
+        Integer size = sc.nextInt(); 
+        System.out.println("Enter Square Matrix"+size+"*"+size); 
+        ArrayList<List<Integer>> matrix = new ArrayList<>(size); 
+        for(int i = 0; i < size ; i++){ 
+            List<Integer> lis = new ArrayList(); 
+            for(int j = 0; j < size ; j++){ 
+                lis.add(sc.nextInt()); 
+            } 
+            matrix.add(i,lis); 
+        } 
+        SymmentricalMatrix sm = new SymmentricalMatrix(); 
+        System.out.println(sm.getSymmenticMatrix(matrix)); 
+    } 
+ 
+    private  List<Integer> getSymmenticMatrix( ArrayList<List<Integer>> matrix){ 
+        List<Integer> resultList = new ArrayList<>(); 
+        int matrixSize = matrix.get(0).size(); 
+        int l = 0,k = 0,m = 0; 
+        int n = matrixSize - 1; 
+        for( i = l; i <= n ;){ 
+            for( j = k; j <= n;){ 
+                if(j==n){ 
+                    resultList.add(matrix.get(i).get(j)); 
+                    k=4; 
+                    l=1; 
+ 
+                } 
+              resultList.add(matrix.get(i).get(j)); 
+                j++;i++; 
+            } 
+        } 
+ 
+ 
+        return resultList; 
+    } 
+} 
+ 
