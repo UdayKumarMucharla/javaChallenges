@@ -1,0 +1,50 @@
+import  java.util.*;
+
+
+public class DiagonalMatrix {
+    public static  void main(String[] args){
+        System.out.println("Input Matrix");
+        List<List<Integer>> inputMatrix = new ArrayList<>();
+        inputMatrix.add(List.of(1,2,3,4));
+        inputMatrix.add(List.of(5,6,7,8));
+        inputMatrix.add(List.of(9,10,11,12));
+        inputMatrix.add(List.of(13,14,15,16));
+        List<List<Integer>> outMatrix = new ArrayList<>();
+        for(int i = 0 ; i < inputMatrix.size() ; i++){
+            for(int j = 0 ; j < inputMatrix.get(0).size() ; j++){
+                List<Integer> temp = new  ArrayList<>();
+                if(i != 0 && j != 0 && i != (inputMatrix.get(0).size() -1)&& j != (inputMatrix.get(0).size()-1)){
+                    //Element
+                    temp.add(inputMatrix.get(i).get(j));
+                    //Left
+                    temp.add(inputMatrix.get(i).get(j-1));
+                    //Right
+                    temp.add(inputMatrix.get(i).get(j+1));
+                    //up
+                    temp.add(inputMatrix.get(i-1).get(j));
+                    //Down
+                    temp.add(inputMatrix.get(i+1).get(j));
+                    outMatrix.add(temp);
+                }else{
+                    temp.add(inputMatrix.get(i).get(j));
+                    if((j-1) >= 0 && (j-1) <= (inputMatrix.get(0).size()-1))
+                        //Left
+                        temp.add(inputMatrix.get(i).get(j-1));
+                    if((j+1) >= 0 && (j+1) <= (inputMatrix.get(0).size()-1))
+                        //Right
+                        temp.add(inputMatrix.get(i).get(j+1));
+                    if((i-1) >= 0 && (i-1) <= (inputMatrix.size()-1))
+                        //up
+                        temp.add(inputMatrix.get(i-1).get(j));
+                    if((i+1) >= 0 && (i+1) <= (inputMatrix.size()-1))
+                        //Down
+                        temp.add(inputMatrix.get(i+1).get(j));
+                    outMatrix.add(temp);
+
+                }
+            }
+        }
+        System.out.println(outMatrix.toString());
+    }
+
+}
