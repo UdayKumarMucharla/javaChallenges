@@ -1,0 +1,32 @@
+import java.util.*;
+
+public class SymmentricalMatrix {
+    public enum Rotate  {L,D,R,U}
+    public static  void main(String[] args) {
+        List<List<Integer>> inputMatrix = new ArrayList<>();
+        inputMatrix.add(List.of(1, 2, 3, 4));
+        inputMatrix.add(List.of(5, 6, 7, 8));
+        inputMatrix.add(List.of(9, 10, 11, 12));
+        inputMatrix.add(List.of(13, 14, 15, 16));
+        SymmentricalMatrix sm = new SymmentricalMatrix();
+        List<Integer> outList = new ArrayList<>();
+        
+        System.out.println(outList);
+        System.out.println(inputMatrix);
+
+//        System.out.println(sm.transposeMatrix(inputMatrix).toString());
+
+    }
+    List<List<Integer>> transposeMatrix(List<List<Integer>> inputMatrix){
+        inputMatrix.remove(0);
+        List<List<Integer>> transposeMatrix = new ArrayList<>();
+        for(int i=0 ; i < inputMatrix.get(0).size() ; i++){
+            List<Integer> temp = new ArrayList<>();
+            for (int j = 0 ; j < inputMatrix.size(); j++){
+                temp.add(inputMatrix.get(j).get(i));
+            }
+            transposeMatrix.add(temp);
+        }
+        return transposeMatrix;
+    }
+}
